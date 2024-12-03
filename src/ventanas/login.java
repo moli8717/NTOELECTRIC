@@ -3,8 +3,6 @@ package ventanas;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
 import conexion.Conexiones;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

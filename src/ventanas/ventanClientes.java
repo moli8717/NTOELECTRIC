@@ -1,8 +1,7 @@
 package ventanas;
 import conexion.Conexiones;
 import java.sql.*;
-import java.sql.Connection;          
-import java.sql.DriverManager;       
+import java.sql.Connection;                
 import java.sql.PreparedStatement;   
 import java.sql.ResultSet;           
 import java.sql.SQLException;        
@@ -80,7 +79,7 @@ public void Buscar_id_cliente(){
         DefaultTableModel modelo = (DefaultTableModel)tabla1.getModel();
         modelo.setRowCount(0);
         try {
-        Connection con =conexion.conectar();
+        Connection con =Conexiones.conectar();
        PreparedStatement consulta = con.prepareStatement(sql);
         consulta.setString(1, idCliente);
         ResultSet resultado = consulta.executeQuery();
@@ -117,7 +116,7 @@ public void Buscar_nombre() {
     DefaultTableModel modelo = (DefaultTableModel)tabla1.getModel();
     modelo.setRowCount(0);
     try {
-        Connection con =conexion.conectar();
+        Connection con =Conexiones.conectar();
         PreparedStatement consulta = con.prepareStatement(sql);
         consulta. setString(1,"%"+Nombrecliente+"%");
         ResultSet resultado = consulta.executeQuery();
@@ -186,6 +185,11 @@ public void Buscar_nombre() {
         b_insertar.setFont(new java.awt.Font("Segoe UI Black", 2, 14)); // NOI18N
         b_insertar.setText("Insertar");
         b_insertar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        b_insertar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_insertarActionPerformed(evt);
+            }
+        });
         getContentPane().add(b_insertar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 280, 110, 40));
 
         b_actualizar.setBackground(new java.awt.Color(102, 255, 102));
@@ -214,7 +218,7 @@ public void Buscar_nombre() {
 
         l_nombre.setFont(new java.awt.Font("Segoe UI Black", 2, 14)); // NOI18N
         l_nombre.setText("nombre");
-        getContentPane().add(l_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 180, -1, -1));
+        getContentPane().add(l_nombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 180, 70, -1));
 
         b_borrar.setBackground(new java.awt.Color(102, 255, 102));
         b_borrar.setFont(new java.awt.Font("Segoe UI Black", 2, 14)); // NOI18N
@@ -315,6 +319,12 @@ public void Buscar_nombre() {
         // TODO add your handling code here:
     }//GEN-LAST:event_t_nombreActionPerformed
 
+    private void b_insertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_insertarActionPerformed
+        ventaInsertarClientes ventInsertarClientes = new ventaInsertarClientes();
+        ventInsertarClientes.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_b_insertarActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -367,5 +377,4 @@ public void Buscar_nombre() {
     private javax.swing.JTextField t_nombre;
     private javax.swing.JTable tabla1;
     // End of variables declaration//GEN-END:variables
-
 }
