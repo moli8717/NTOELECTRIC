@@ -1,5 +1,6 @@
 package ventanas;
 import conexion.Conexiones;
+import java.awt.HeadlessException;
 import java.sql.*;
 import java.sql.Connection;                
 import java.sql.PreparedStatement;   
@@ -10,7 +11,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel; 
 import javax.swing.table.DefaultTableCellRenderer; 
 
-public class ventanClientes extends javax.swing.JFrame {
+public final class ventanClientes extends javax.swing.JFrame {
 
       public ventanClientes() {
         initComponents();
@@ -18,11 +19,10 @@ public class ventanClientes extends javax.swing.JFrame {
         setResizable(false);
         Mostrar("clientes");
     }
-    Conexiones conexion = new Conexiones();
 
     public void Mostrar(String tabla) {
     String sql = "SELECT * FROM " + tabla;
-    Connection Con = conexion.conectar();
+    Connection Con = Conexiones.conectar();
 
     if (Con == null) {
         System.out.println("Error: No se pudo establecer conexión con la base de datos.");
@@ -56,7 +56,6 @@ public class ventanClientes extends javax.swing.JFrame {
             modelo.addRow(datos);
         }
     } catch (SQLException e) {
-        e.printStackTrace();
         System.out.println("Error al ejecutar la consulta: " + e.getMessage());
     }
         centrarTexto(tabla1);
@@ -137,7 +136,7 @@ public void Buscar_nombre() {
             JOptionPane.INFORMATION_MESSAGE);
         }
         
-    } catch (Exception e) {
+    } catch (HeadlessException | SQLException e) {
        JOptionPane.showConfirmDialog(null,"error en la busqueda","resultado",
  JOptionPane.WARNING_MESSAGE);
     }
@@ -164,10 +163,11 @@ public void Buscar_nombre() {
         l_fonfo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("VENTANA CLIENTES");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         l_logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/logo verde.png"))); // NOI18N
-        getContentPane().add(l_logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 60, -1, -1));
+        getContentPane().add(l_logo, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 70, -1, -1));
 
         b_buscar.setBackground(new java.awt.Color(102, 255, 102));
         b_buscar.setFont(new java.awt.Font("Segoe UI Black", 2, 14)); // NOI18N
@@ -196,7 +196,12 @@ public void Buscar_nombre() {
         b_actualizar.setFont(new java.awt.Font("Segoe UI Black", 2, 14)); // NOI18N
         b_actualizar.setText("Actualizar");
         b_actualizar.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(b_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 280, 110, 40));
+        b_actualizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                b_actualizarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(b_actualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 280, 110, 40));
 
         t_nombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -229,7 +234,7 @@ public void Buscar_nombre() {
                 b_borrarActionPerformed(evt);
             }
         });
-        getContentPane().add(b_borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 280, 110, 40));
+        getContentPane().add(b_borrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 280, 110, 40));
 
         tabla1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -268,7 +273,7 @@ public void Buscar_nombre() {
                 b_salirActionPerformed(evt);
             }
         });
-        getContentPane().add(b_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 560, 110, 40));
+        getContentPane().add(b_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 550, 110, 40));
 
         l_clientea.setFont(new java.awt.Font("Segoe UI Black", 2, 18)); // NOI18N
         l_clientea.setText("Modulo Clientes");
@@ -293,7 +298,7 @@ public void Buscar_nombre() {
     }//GEN-LAST:event_b_salirActionPerformed
 
     private void b_borrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_borrarActionPerformed
-        // TODO add your handling code here:
+        new borrarclientes().setVisible(true);
     }//GEN-LAST:event_b_borrarActionPerformed
 
     private void b_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_buscarActionPerformed
@@ -320,10 +325,13 @@ public void Buscar_nombre() {
     }//GEN-LAST:event_t_nombreActionPerformed
 
     private void b_insertarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_insertarActionPerformed
-        ventaInsertarClientes ventInsertarClientes = new ventaInsertarClientes();
-        ventInsertarClientes.setVisible(true);
-        this.dispose();
+        new ventaInsertarClientes().setVisible(true);
+        
     }//GEN-LAST:event_b_insertarActionPerformed
+
+    private void b_actualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_actualizarActionPerformed
+    new ventaActualizarCliente().setVisible(true);
+    }//GEN-LAST:event_b_actualizarActionPerformed
 
     /**
      * @param args the command line arguments

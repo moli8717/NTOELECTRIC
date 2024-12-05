@@ -16,8 +16,6 @@ public class ventanaPrincipal extends javax.swing.JFrame {
         l_modulo = new javax.swing.JLabel();
         b_cliente = new javax.swing.JButton();
         b_productos = new javax.swing.JButton();
-        b_ventas = new javax.swing.JButton();
-        b_almacen = new javax.swing.JButton();
         b_volver = new javax.swing.JButton();
         b_salir = new javax.swing.JButton();
         b_email = new javax.swing.JButton();
@@ -50,7 +48,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 b_clienteActionPerformed(evt);
             }
         });
-        getContentPane().add(b_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 160, 160, 60));
+        getContentPane().add(b_cliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 190, 160, 60));
 
         b_productos.setBackground(new java.awt.Color(102, 255, 102));
         b_productos.setFont(new java.awt.Font("Segoe UI Black", 2, 14)); // NOI18N
@@ -64,28 +62,7 @@ public class ventanaPrincipal extends javax.swing.JFrame {
                 b_productosActionPerformed(evt);
             }
         });
-        getContentPane().add(b_productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 160, 160, 60));
-
-        b_ventas.setBackground(new java.awt.Color(102, 255, 102));
-        b_ventas.setFont(new java.awt.Font("Segoe UI Black", 2, 14)); // NOI18N
-        b_ventas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/ventas.png"))); // NOI18N
-        b_ventas.setText("ventas");
-        b_ventas.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        b_ventas.setMaximumSize(new java.awt.Dimension(151, 51));
-        b_ventas.setMinimumSize(new java.awt.Dimension(151, 51));
-        b_ventas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                b_ventasActionPerformed(evt);
-            }
-        });
-        getContentPane().add(b_ventas, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 160, 150, 60));
-
-        b_almacen.setBackground(new java.awt.Color(102, 255, 102));
-        b_almacen.setFont(new java.awt.Font("Segoe UI Black", 2, 14)); // NOI18N
-        b_almacen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/almacen.png"))); // NOI18N
-        b_almacen.setText("almacen");
-        b_almacen.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
-        getContentPane().add(b_almacen, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 160, 150, 60));
+        getContentPane().add(b_productos, new org.netbeans.lib.awtextra.AbsoluteConstraints(590, 190, 160, 60));
 
         b_volver.setBackground(new java.awt.Color(102, 255, 102));
         b_volver.setFont(new java.awt.Font("Segoe UI Black", 2, 14)); // NOI18N
@@ -188,12 +165,8 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_b_clienteActionPerformed
 
     private void b_productosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_productosActionPerformed
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_b_productosActionPerformed
-
-    private void b_ventasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_b_ventasActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_b_ventasActionPerformed
 
     private void op_acercadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_op_acercadeActionPerformed
         // TODO add your handling code here:
@@ -251,12 +224,10 @@ public class ventanaPrincipal extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel L_fondo;
     private javax.swing.JMenuItem acerca_de;
-    private javax.swing.JButton b_almacen;
     private javax.swing.JButton b_cliente;
     private javax.swing.JButton b_email;
     private javax.swing.JButton b_productos;
     private javax.swing.JButton b_salir;
-    private javax.swing.JButton b_ventas;
     private javax.swing.JButton b_volver;
     private javax.swing.JLabel l_logo;
     private javax.swing.JLabel l_modulo;

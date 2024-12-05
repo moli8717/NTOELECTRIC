@@ -22,8 +22,7 @@ public class Conexiones {
     }
 
     public static void main(String[] args) {
-        Conexiones test = new Conexiones();
-        test.conectar();
+        Conexiones.conectar();
     }
 }
 

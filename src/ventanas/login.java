@@ -9,10 +9,7 @@ import java.sql.ResultSet;
 import javax.swing.JOptionPane;
 
 
-/**
- *
- * @author USUARIO
- */
+
 public class login extends javax.swing.JFrame {
 
     
@@ -96,7 +93,6 @@ int intentos=0;
         String clave = new String(camp_pasword.getPassword());
         PreparedStatement consulta;
         ResultSet resultado;
-        int control=0;
         if (camp_usuario.getText().isEmpty()||new String(camp_pasword.getPassword()).isEmpty()){
             JOptionPane.showMessageDialog(null,"no deben haber campos vacios", "errror",
                     JOptionPane.ERROR_MESSAGE);

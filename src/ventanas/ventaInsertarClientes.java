@@ -33,7 +33,7 @@ public class ventaInsertarClientes extends javax.swing.JFrame {
         b_cancelar = new javax.swing.JButton();
         l_fondo = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("INSERTAR CLIENTES");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -91,8 +91,7 @@ public class ventaInsertarClientes extends javax.swing.JFrame {
         String direccion = t_direccion.getText().trim();
         String telefono = t_telefono.getText().trim();
         
-        Conexiones conexion = new Conexiones();
-        Connection con = conexion.conectar();
+        Connection con = Conexiones.conectar();
         
         String sql = "insert into clientes(nombre, direccion, telefono)values(?,?,?)";
         if(nombre.isEmpty()||direccion.isEmpty()||telefono.isEmpty()){
